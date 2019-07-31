@@ -1,7 +1,7 @@
 # remote-slave-port
 Slave port for async cross-iframe messaging. Load this in an iframe.
 
-See remote-master-port for the other side of the channel (in the parent window).
+See [remote-master-port](https://github.com/websh-org/remote-master-port) for the other side of the channel (in the parent window).
 
 The master port must innitiate the connection. 
 
