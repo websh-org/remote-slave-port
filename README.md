@@ -23,6 +23,8 @@ const mySlavePort = new RemoteSlavePort(channelId);
 
 ## Methods
 
+All methods return the MasterSlavePort object, so you can chain method calls.
+
 ### `manifest( Object manifest )`
 Register the slave's manifest. This will be sent to the master
 on connection.
