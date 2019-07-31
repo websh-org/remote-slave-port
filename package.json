@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "name": "@websh/remote-slave-port",
   "version": "0.1.0",
   "description": "Slave port for async cross-site messaging",
@@ -9,18 +8,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/websh-org/remote-slave-port.git"
-=======
-  "name": "@websh/web-shell-app",
-  "version": "0.1.0",
-  "description": "Slave port for async cross-site messaging",
-  "module": "web-shell-app.mjs",
-  "scripts": {
-    "build": "parcel build web-shell-app.mjs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/websh-org/web-shell-app.git"
->>>>>>> e4b45d0a164cc25981148ad05d89a54ecebdc236
   },
   "keywords": [
     "websh",
@@ -33,16 +20,10 @@
   "author": "Zoran Obradović",
   "license": "ISC",
   "bugs": {
-<<<<<<< HEAD
-    "url": "https://github.com/websh-org/remote-slave-port/issues"
-  },
-  "homepage": "https://github.com/websh-org/remote-slave-port#readme"
-=======
     "url": "https://github.com/websh-org/web-shell-app/issues"
   },
   "homepage": "https://github.com/websh-org/web-shell-app#readme",
   "dependencies": {
     "@websh/remote-slave-port": "^0.1.0"
   }
->>>>>>> e4b45d0a164cc25981148ad05d89a54ecebdc236
 }
