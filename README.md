@@ -25,20 +25,20 @@ const mySlavePort = new RemoteSlavePort(channelId);
 
 All methods return the MasterSlavePort object, so you can chain method calls.
 
-### `manifest( Object manifest )`
+### `.manifest( Object manifest )`
 Register the slave's manifest. This will be sent to the master
 on connection.
 
-### `command( String command, Function( Object args ) fn )`
+### `.command( String command, Function( Object args ) fn )`
 Register a command to be called from the master port.
 Any value returned from the function will be sent back to the master port.
 The function can be async.
 
-### `on( String event, Function( Object data ) fn )`
+### `.on( String event, Function( Object data ) fn )`
 
 Handle an event on the slave port. See Events.
 
-### `trigger( String event, Object data )`
+### `.trigger( String event, Object data )`
 Trigger an event that will be sent to the master port
 
 ## TODO: Events
