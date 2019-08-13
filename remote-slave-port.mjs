@@ -1,28 +1,27 @@
 export class RemoteSlavePort {
-  constructor (id) {
+  constructor(id) {
     this._port = null;
     this._manifest = {};
     this._commands = {};
     this._handlers = {};
 
     const _receive = async ({ cmd, args, rsvp }) => {
-       try {
+      try {
         if (!cmd) {
-          throw new Error("slave-specify-command");
-        } 
-        if (!this._commands[cmd]) {
-          throw new Error("slave-no-such-command");
+          this.throw("slave-specify-command");
         }
-        console.log('command',cmd)
+        if (!this._commands[cmd]) {
+          this.throw("slave-no-such-command");
+        }
         const res = await this._commands[cmd](args);
         const [result, transfer] = [].concat(res);
         this._port.postMessage({ result, re: rsvp }, transfer)
       } catch (error) {
-        this._port.postMessage({ error: error.message || String(error), re: rsvp })
+        this._port.postMessage({ error: error.error| error.message || String(error), data:error.data || {}, re: rsvp })
       }
     }
 
-    const _trigger = async (ev,data) => {
+    const _trigger = async (ev, data) => {
       for (var h in this._handlers[ev]) {
         this._handlers[ev][h](data);
       }
@@ -61,5 +60,9 @@ export class RemoteSlavePort {
   trigger(event, data = {}) {
     port.postMessage({ event, data });
     return this;
+  }
+
+  throw(error, data = {}) {
+    throw { error, data }
   }
 }
