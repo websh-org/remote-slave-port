@@ -17,7 +17,7 @@ export class RemoteSlavePort {
         const [result, transfer] = [].concat(res);
         this._port.postMessage({ result, re: rsvp }, transfer)
       } catch (error) {
-        this._port.postMessage({ error: error.error| error.message || String(error), data:error.data || {}, re: rsvp })
+        this._port.postMessage({ error: error.error || "command-failed", message: error.message || String(error), data:error.data || {}, re: rsvp })
       }
     }
 
