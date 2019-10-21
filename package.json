@@ -1,6 +1,6 @@
 {
   "name": "@websh/remote-slave-port",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Slave port for async cross-site messaging",
   "module": "remote-slave-port.mjs",
   "scripts": {},
