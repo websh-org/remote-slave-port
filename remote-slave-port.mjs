@@ -11,12 +11,13 @@ export class RemoteSlavePort {
           this.throw("slave-specify-command");
         }
         if (!this._commands[cmd]) {
-          this.throw("slave-no-such-command");
-        }
-        const res = await this._commands[cmd](args);
+          this.throw("slave-command-not-supported",{command:cmd});
+        } 
+        const res = await this._commands[cmd].call(this,args);
         const [result, transfer] = [].concat(res);
         this._port.postMessage({ result, re: rsvp }, transfer)
       } catch (error) {
+        console.log("app error",error)
         this._port.postMessage({ error: error.error || "command-failed", message: error.message || String(error), data:error.data || {}, re: rsvp })
       }
     }
@@ -55,6 +56,10 @@ export class RemoteSlavePort {
   command(cmd, fn) {
     this._commands[cmd] = fn;
     return this;
+  }
+  commands(cmds) {
+    for (var id in cmds) this.command(cmds,cmds[i])
+    return;
   }
 
   trigger(event, data = {}) {
