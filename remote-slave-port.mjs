@@ -11,7 +11,8 @@ export class RemoteSlavePort {
           this.throw("slave-specify-command");
         }
         if (!this._commands[cmd]) {
-          this.throw("slave-command-not-supported",{command:cmd});
+          if (rsvp) this.throw("slave-command-not-supported",{command:cmd});
+          return;
         } 
         const res = await this._commands[cmd].call(this,args);
         const [result, transfer] = [].concat(res);
