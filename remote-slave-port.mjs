@@ -29,9 +29,10 @@ export class RemoteSlavePort {
       }
     }
 
-    const _connect = (ev) => {
+    const _connect = async (ev) => {
       if (ev.source !== window.parent) return;
       if (!ev.data || !ev.data.port || !ev.data[id] === 'connect') return;
+      await _trigger("connect",ev.data.data);
       this._port = ev.data.port;
       this._port.postMessage({ [id]: 'connected', manifest: this._manifest })
       window.removeEventListener('message', _connect);
@@ -64,7 +65,7 @@ export class RemoteSlavePort {
   }
 
   trigger(event, data = {}) {
-    port.postMessage({ event, data });
+    this._port.postMessage({ event, data });
     return this;
   }
 
