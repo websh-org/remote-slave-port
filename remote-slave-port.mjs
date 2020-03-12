@@ -65,6 +65,7 @@ export class RemoteSlavePort {
   }
 
   trigger(event, data = {}) {
+    console.log('trigger')
     this._port.postMessage({ event, data });
     return this;
   }
